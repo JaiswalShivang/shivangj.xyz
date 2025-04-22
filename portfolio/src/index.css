@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 body {
   background-color: black;
@@ -36,7 +38,7 @@ body {
   .scroll-animation {
     gap: 1rem;
   }
-  
+
   @keyframes scroll {
     0% {
       transform: translateX(0);
