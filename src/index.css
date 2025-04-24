@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap');
+@import "tailwindcss";
+
+body {
+  background-color: black;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-150px * 7 - 2rem * 7)); /* Adjust based on number of skills and gap */
+  }
+}
+
+.scroll-animation {
+  animation: scroll 20s linear infinite;
+  display: flex;
+  gap: 2rem;
+}
+
+.scroll-animation:hover {
+  animation-play-state: paused;
+}
+
+.hover-pause:hover {
+  animation-play-state: paused;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .scroll-animation {
+    gap: 1rem;
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(calc(-120px * 7 - 1rem * 7)); /* Adjust for mobile */
+    }
+  }
+
+  .skill-container {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+
+
+
