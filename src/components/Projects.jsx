@@ -2,12 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import { motion, useInView, useAnimationControls, AnimatePresence } from "framer-motion";
 import { FaPlay, FaCode, FaReact, FaNodeJs } from "react-icons/fa";
 import { SiTailwindcss, SiExpress, SiMongodb } from "react-icons/si";
+import soulmateImage from "../assets/projects/soulmatewebsite.png";
 
 const Projects = () => {
-  // Animation controls for the coming soon text
   const comingSoonControls = useAnimationControls();
 
-  // Start animations when component mounts
   useEffect(() => {
     comingSoonControls.start({
       opacity: 1,
@@ -18,7 +17,6 @@ const Projects = () => {
 
   return (
     <div className="w-full px-4 md:px-6 lg:px-8 py-16 md:py-24 overflow-hidden bg-black relative">
-      {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <motion.div
           className="absolute top-[10%] right-[5%] w-[300px] h-[300px] bg-[#f66539]/5 rounded-full blur-[100px]"
@@ -66,7 +64,7 @@ const Projects = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
             <ProjectCard
               title="Soulmate"
-              image="/images/projects/soulmatewebsite.png"
+              image={soulmateImage}
               description="A dating app that connects people based on their interests and preferences."
               demoLink="https://soulmate1-ochre.vercel.app/"
               codeLink="https://github.com/JaiswalShivang/Soulmate.git"

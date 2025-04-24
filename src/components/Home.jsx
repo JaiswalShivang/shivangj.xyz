@@ -30,7 +30,7 @@ const Home = () => {
       >
         <h1 className="text-gray-400 text-xl md:text-2xl">
           <ReactTyped
-            strings={["Web Developer", "Coder", "Data Scientist"]}
+            strings={["Web Developer", "Coder", "Software Engineer"]}
             typeSpeed={40}
             backSpeed={40}
             loop={true}
