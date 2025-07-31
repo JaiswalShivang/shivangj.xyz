@@ -1,266 +1,171 @@
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useInView, useAnimationControls, AnimatePresence } from "framer-motion";
-import { FaPlay, FaCode, FaReact, FaNodeJs } from "react-icons/fa";
-import { SiTailwindcss, SiExpress, SiMongodb } from "react-icons/si";
-import soulmateImage from "../assets/projects/soulmatewebsite.png";
+import React from "react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
-  const comingSoonControls = useAnimationControls();
-
-  useEffect(() => {
-    comingSoonControls.start({
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: "easeOut" }
-    });
-  }, [comingSoonControls]);
-
   return (
-    <div className="w-full px-4 md:px-6 lg:px-8 py-16 md:py-24 overflow-hidden bg-black relative">
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <motion.div
-          className="absolute top-[10%] right-[5%] w-[300px] h-[300px] bg-[#f66539]/5 rounded-full blur-[100px]"
-          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-        <motion.div
-          className="absolute bottom-[20%] left-[10%] w-[250px] h-[250px] bg-[#f66539]/3 rounded-full blur-[120px]"
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.5, 0.3, 0.5] }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
-
+    <div className="w-full px-4 md:px-6 lg:px-8 py-16 md:py-24 overflow-hidden bg-white">
       <motion.div
-        className="relative z-10"
+        className="max-w-6xl mx-auto"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
       >
         <motion.div
-          className="flex flex-col items-center mb-16"
+          className="text-center mb-16"
           initial={{ y: -20 }}
           animate={{ y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <motion.h1
-            name="Projects"
-            className="text-center text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f66539] to-[#ff8c66] drop-shadow-md mb-4"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <h1 name="Projects" className="text-4xl md:text-5xl font-bold text-sky-700 mb-4">
             Projects
-          </motion.h1>
-
-          <motion.div
-            className="w-24 h-1 bg-gradient-to-r from-transparent via-[#f66539] to-transparent"
-            initial={{ width: 0 }}
-            animate={{ width: "6rem" }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-          />
+          </h1>
+          <div className="w-24 h-1 bg-sky-600 mx-auto rounded-full"></div>
+          <p className="text-sky-500 mt-4 text-lg font-medium">
+            Showcasing my work and creativity
+          </p>
         </motion.div>
-
-        <div className="max-w-5xl mx-auto relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start">
-            <ProjectCard
-              title="Soulmate"
-              image={soulmateImage}
-              description="A dating app that connects people based on their interests and preferences."
-              demoLink="https://soulmate1-ochre.vercel.app/"
-              codeLink="https://github.com/JaiswalShivang/Soulmate.git"
-            />
-
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
           <motion.div
-            className="bg-gradient-to-br from-[#f66539]/20 to-[#f66539]/5 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center p-8 h-[400px] backdrop-blur-sm border border-[#f66539]/10 relative group"
+            className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-sky-500/30 transition-all duration-300 flex flex-col h-full"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            whileHover={{
-              scale: 1.02,
-              boxShadow: "0 0 30px rgba(246, 101, 57, 0.6)",
-              translateY: -8
-            }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            whileHover={{ scale: 1.02 }}
           >
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#f66539]/5 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            <div className="absolute -top-20 -right-20 w-40 h-40 bg-[#f66539]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-[#f66539]/10 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-lg flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-sky-700 mb-1">CampusConnect</h3>
+                <p className="text-sky-500 text-sm">Full-Stack Club Management Platform</p>
+              </div>
+            </div>
 
-            {/* Content */}
-            <div className="relative z-10 flex flex-col items-center">
-              <motion.h3
-                className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#f66539] to-[#ff8c66] mb-6 text-center drop-shadow-sm"
-                initial={{ y: -20, opacity: 0 }}
-                animate={comingSoonControls}
-                transition={{ duration: 0.5 }}
+            <div className="mb-4 flex-grow">
+              <ul className="text-sky-600 text-sm space-y-2 mb-4">
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Developed a full-stack club management platform with secure role-based access (student/admin).
+                </li>
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Enabled admins to create events and post announcements with Cloudinary-based image uploads for clubs and users.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Integrated real-time, club-specific group chat using Socket.io, accessible only to approved members and admins.
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">ReactJS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">Tailwind CSS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">MongoDB</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">ExpressJS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">NodeJS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">SocketIO</span>
+            </div>
+            <div className="flex gap-3 mt-auto">
+              <a
+                href="https://github.com/JaiswalShivang/CampusConnect"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors duration-300 text-center font-medium"
               >
-                More Coming Soon
-              </motion.h3>
-
-              <motion.div
-                className="w-16 h-1 bg-gradient-to-r from-transparent via-[#f66539] to-transparent mb-8"
-                initial={{ width: 0 }}
-                animate={{ width: "4rem" }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-
-              <motion.p
-                className="text-gray-400 text-center mb-8 max-w-xs"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                View Code
+              </a>
+              <a
+                href="https://github.com/JaiswalShivang/CampusConnect"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 border-2 border-sky-500 text-sky-500 rounded-lg hover:bg-sky-500 hover:text-white transition-all duration-300"
               >
-                Exciting projects are in development.
-                <br />Stay tuned for updates!
-              </motion.p>
-
-              <motion.div
-                className="flex items-center gap-2"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.7 }}
-              >
-                <span className="text-[#f66539] text-3xl">⚡</span>
-                <span className="text-[#f66539] font-medium text-lg md:text-xl">Coming Soon</span>
-              </motion.div>
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                </svg>
+              </a>
             </div>
           </motion.div>
+          <motion.div
+            className="bg-white p-8 rounded-xl shadow-lg border border-gray-200 hover:shadow-xl hover:border-sky-500/30 transition-all duration-300 flex flex-col h-full"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            whileHover={{ scale: 1.02 }}
+          >
+            <div className="flex items-center mb-6">
+              <div className="w-12 h-12 bg-gradient-to-br from-sky-500 to-sky-600 rounded-lg flex items-center justify-center mr-4">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-sky-700 mb-1">Quizzy</h3>
+                <p className="text-sky-500 text-sm">Quiz Management Platform</p>
+              </div>
             </div>
+
+            <div className="mb-4 flex-grow">
+              <ul className="text-sky-600 text-sm space-y-2 mb-4">
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Created a quiz management platform where teachers can create quizzes and monitor student performance.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Used JWT-based auth and protected routes to separate Student/Teacher dashboards.
+                </li>
+                <li className="flex items-start">
+                  <span className="w-1.5 h-1.5 bg-sky-500 rounded-full mt-2 mr-3 flex-shrink-0"></span>
+                  Designed a dynamic leaderboard system and real-time quiz scoring stored in MongoDB.
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex flex-wrap gap-2 mb-6">
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">ReactJS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">CSS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">MongoDB</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">ExpressJS</span>
+              <span className="px-3 py-1 bg-sky-100 text-sky-700 rounded-full text-xs font-medium">NodeJS</span>
+            </div>
+            <div className="flex gap-3 mt-auto">
+              <a
+                href="https://github.com/JaiswalShivang/Quizzy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 px-4 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition-colors duration-300 text-center font-medium"
+              >
+                View Code
+              </a>
+              <a
+                href="https://github.com/JaiswalShivang/Quizzy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 border-2 border-sky-500 text-sky-500 rounded-lg hover:bg-sky-500 hover:text-white transition-all duration-300"
+              >
+                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                  <path fillRule="evenodd" d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+          </motion.div>
         </div>
+
+
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+        </motion.div>
       </motion.div>
     </div>
-  );
-};
-
-const ProjectCard = ({ title, image, description, demoLink, codeLink }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.3 });
-  const [isHovered, setIsHovered] = useState(false);
-
-  // Tech stack with icons
-  const techStack = [
-    { name: "React", icon: <FaReact className="text-[#61DAFB]" /> },
-    { name: "Node.js", icon: <FaNodeJs className="text-[#68A063]" /> },
-    { name: "MongoDB", icon: <SiMongodb className="text-[#4DB33D]" /> },
-    { name: "Express", icon: <SiExpress className="text-white" /> },
-    { name: "Tailwind CSS", icon: <SiTailwindcss className="text-[#38B2AC]" /> }
-  ];
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView ?
-        { opacity: 1, y: 0, transition: { duration: 0.5 } } :
-        { opacity: 0, y: 50 }
-      }
-      className="bg-gradient-to-br from-[#ff7f50] to-[#ff6b3d] rounded-xl overflow-hidden shadow-lg transition-all duration-300 h-[400px] flex flex-col relative group"
-      whileHover={{
-        boxShadow: "0 0 30px rgba(246, 101, 57, 0.6)",
-        translateY: -8
-      }}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-    >
-      {/* Decorative elements */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-bl-full transform -translate-x-4 translate-y-4 opacity-0 group-hover:opacity-100 transition-all duration-700 z-0"></div>
-      <div className="absolute bottom-0 left-0 w-16 h-16 bg-black/10 rounded-tr-full transform translate-x-4 -translate-y-4 opacity-0 group-hover:opacity-100 transition-all duration-700 z-0"></div>
-
-      <div className="p-5 flex flex-col h-full relative z-10">
-        <motion.div
-          className="absolute -top-2 -left-2 w-12 h-12 rounded-br-xl bg-gradient-to-br from-[#ff6b3d] to-[#ff8c66] shadow-lg"
-          initial={{ opacity: 0, scale: 0 }}
-          animate={isInView ? { opacity: 1, scale: 1, rotate: 45 } : { opacity: 0, scale: 0 }}
-          transition={{ duration: 0.5, delay: 0.2, type: "spring" }}
-        />
-
-        <motion.h3
-          className="text-xl md:text-2xl font-bold text-white mb-3 drop-shadow-md relative z-10"
-          initial={{ y: -10, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: -10, opacity: 0 }}
-          transition={{ duration: 0.3, delay: 0.2 }}
-        >
-          {title}
-        </motion.h3>
-
-        <div className="rounded-lg overflow-hidden mb-3 shadow-md transition-all duration-300 flex-shrink-0 relative">
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 flex items-end"
-          >
-            <AnimatePresence>
-              {isHovered && (
-                <motion.p
-                  className="text-white p-3 text-sm md:text-base"
-                  initial={{ x: -100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {description}
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </motion.div>
-
-          <motion.img
-            src={image}
-            alt={title}
-            className="w-full h-auto object-cover max-h-[180px] transform group-hover:scale-105 transition-transform duration-700"
-            initial={{ scale: 1.1, opacity: 0 }}
-            animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-          />
-        </div>
-
-        {/* Tech stack animations */}
-        <div className="flex flex-wrap gap-2 mb-auto justify-center">
-          <AnimatePresence>
-            {isHovered && techStack.map((tech, index) => (
-              <motion.div
-                key={tech.name}
-                className="flex items-center gap-1 bg-black/20 backdrop-blur-sm px-2 py-1 rounded-full border border-white/10"
-                initial={{ x: 50, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: 50, opacity: 0 }}
-                transition={{ duration: 0.3, delay: index * 0.1 }}
-              >
-                <span className="text-lg">{tech.icon}</span>
-                <span className="text-white text-xs">{tech.name}</span>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
-
-        <motion.div
-          className="flex justify-between mt-3 relative z-10"
-          initial={{ y: 20, opacity: 0 }}
-          animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
-          transition={{ duration: 0.3, delay: 0.5 }}
-        >
-          <motion.a
-            href={demoLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-white text-[#ff6b3d] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaPlay className="text-sm" />
-          </motion.a>
-
-          <motion.a
-            href={codeLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-center gap-2 bg-white text-[#ff6b3d] rounded-full p-2 shadow-lg hover:shadow-xl transition-all duration-300"
-            whileHover={{ scale: 1.1, boxShadow: "0 0 15px rgba(255, 255, 255, 0.5)" }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <FaCode className="text-sm" />
-          </motion.a>
-        </motion.div>
-      </div>
-    </motion.div>
   );
 };
 

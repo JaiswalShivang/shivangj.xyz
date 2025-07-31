@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-scroll";
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";
-import profileImage from '../assets/images/image1.png';
+import profileImage from '../assets/images/image1.jpg';
 
 const Home = () => {
   return (
@@ -14,7 +14,7 @@ const Home = () => {
       transition={{ duration: 0.8 }}
     >
       <motion.img
-        className="w-full md:max-w-[40vw] h-auto object-contain drop-shadow-2xl"
+        className="w-80 h-80 md:w-96 md:h-96 rounded-full object-cover drop-shadow-2xl border-4 border-sky-500/20"
         src={profileImage}
         alt="profile"
         initial={{ opacity: 0, y: 20 }}
@@ -28,7 +28,7 @@ const Home = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <h1 className="text-gray-400 text-xl md:text-2xl">
+        <h1 className="text-sky-600 text-xl md:text-2xl font-medium">
           <ReactTyped
             strings={["Web Developer", "Coder", "Software Engineer"]}
             typeSpeed={40}
@@ -37,7 +37,7 @@ const Home = () => {
           />
         </h1>
         <motion.h1
-          className="text-white text-3xl md:text-4xl mt-3 mb-5 font-bold"
+          className="text-sky-700 text-4xl md:text-5xl mt-3 mb-5 font-bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.6 }}
@@ -45,7 +45,7 @@ const Home = () => {
           Shivang Jaiswal
         </motion.h1>
         <motion.p
-          className="text-gray-400 text-lg md:text-2xl max-w-120 leading-relaxed"
+          className="text-sky-500 text-lg md:text-xl max-w-120 leading-relaxed"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.8 }}
@@ -62,9 +62,9 @@ const Home = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 1 }}
         >
-          <a href="/resume/ShivangJaiswal.pdf" download className="block w-fit">
+          <a href="/resume/Shivang_Jaiswal.pdf" download className="block w-fit">
             <motion.button
-              className="text-[#f66539] border-2 border-[#f66539] px-3 sm:px-4 md:px-6 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-black hover:border-black cursor-pointer transition-all duration-500 ease-in-out text-xs sm:text-sm md:text-base shadow-md hover:shadow-lg whitespace-nowrap"
+              className="text-sky-500 border-2 border-sky-500 px-3 sm:px-6 md:px-8 py-1.5 sm:py-2 rounded-full hover:bg-white hover:text-sky-600 hover:border-sky-600 cursor-pointer transition-all duration-500 ease-in-out text-xs sm:text-sm md:text-base shadow-md hover:shadow-lg whitespace-nowrap min-w-[100px] sm:min-w-[120px] md:min-w-[140px]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -72,13 +72,13 @@ const Home = () => {
             </motion.button>
           </a>
           <Link
-            to={'Contact'}
+            to="Contact"
             smooth={true}
             duration={500}
             offset={-70}
           >
             <motion.button
-              className="bg-[#f66539] px-3 sm:px-6 md:px-10 py-1.5 sm:py-2 rounded-full hover:border-white hover:bg-black hover:text-white hover:border-2 cursor-pointer transition-all duration-500 ease-in-out text-xs sm:text-sm md:text-base shadow-md hover:shadow-lg whitespace-nowrap"
+              className="bg-sky-500 text-white px-3 sm:px-6 md:px-8 py-1.5 sm:py-2 rounded-full hover:bg-sky-600 cursor-pointer transition-all duration-500 ease-in-out text-xs sm:text-sm md:text-base shadow-md hover:shadow-lg whitespace-nowrap min-w-[100px] sm:min-w-[120px] md:min-w-[140px]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >

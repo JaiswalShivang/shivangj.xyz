@@ -1,110 +1,66 @@
-import React, { useEffect } from "react";
-import { motion, useAnimationControls } from "framer-motion";
-
-// Import images to ensure they're properly handled by Vite
-import javascriptImg from '../assets/images/javascript.png';
-import nodejsImg from '../assets/images/nodejs.png';
-import mongodbImg from '../assets/images/mongodb.png';
-import djangoImg from '../assets/images/django.png';
-import fastapiImg from '../assets/images/fastapi.png';
-import reactImg from '../assets/images/react.png';
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  SiJavascript,
+  SiNodedotjs,
+  SiMongodb,
+  SiDjango,
+  SiReact,
+  SiExpress,
+  SiHtml5,
+  SiCss3,
+  SiTailwindcss,
+  SiBootstrap
+} from "react-icons/si";
 
 const Skills = () => {
-
   const skills = [
-    { name: 'Javascript', img: javascriptImg },
-    { name: 'NodeJS', img: nodejsImg },
-    { name: 'MongoDB', img: mongodbImg },
-    { name: 'Django', img: djangoImg },
-    { name: 'FastAPI', img: fastapiImg },
-    { name: 'React', img: reactImg },
+    { name: 'JavaScript', icon: SiJavascript, color: '#F7DF1E' },
+    { name: 'React', icon: SiReact, color: '#61DAFB' },
+    { name: 'NodeJS', icon: SiNodedotjs, color: '#339933' },
+    { name: 'Express', icon: SiExpress, color: '#000000' },
+    { name: 'MongoDB', icon: SiMongodb, color: '#47A248' },
+    { name: 'Django', icon: SiDjango, color: '#092E20' },
+    { name: 'HTML', icon: SiHtml5, color: '#E34F26' },
+    { name: 'CSS', icon: SiCss3, color: '#1572B6' },
+    { name: 'Tailwind CSS', icon: SiTailwindcss, color: '#06B6D4' },
+    { name: 'Bootstrap', icon: SiBootstrap, color: '#7952B3' },
   ];
 
-  // Create a duplicate set of skills for the marquee effect
-  const marqueeSkills = [...skills, ...skills, ...skills];
-
-  const controls = useAnimationControls();
-
-  // Start the animation when component mounts
-  useEffect(() => {
-    controls.start({
-      x: ["-10%", "-60%"],
-      transition: {
-        x: {
-          duration: 25,
-          ease: "linear",
-          repeat: Infinity,
-          repeatType: "loop"
-        }
-      }
-    });
-  }, [controls]);
-
-  // Handle hover state
-  const handleMouseEnter = () => {
-    // Just stop the animation where it is
-    controls.stop();
-  };
-
-  const handleMouseLeave = () => {
-    // Resume the animation from current position
-    controls.start({
-      x: "-60%",
-      transition: {
-        duration: 25,
-        ease: "linear",
-        repeat: Infinity,
-        repeatType: "loop"
-      }
-    });
-  };
-
   return (
-    <div className="w-full px-4 md:px-6 lg:px-8 py-16 md:py-24 overflow-hidden">
-      <motion.h1
-        name="Skills"
-        className="text-center text-4xl md:text-5xl font-bold text-[#f66539] mb-16 drop-shadow-md"
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-      >
-        Skills
-      </motion.h1>
+    <div name="Skills" className="w-full px-4 md:px-6 lg:px-8 py-16 md:py-20">
+      <div className="text-center mb-12">
+        <h2 className="text-4xl md:text-5xl font-bold text-sky-700 mb-2">Skills</h2>
+        <div className="w-16 h-0.5 bg-sky-600 mx-auto"></div>
+        <p className="text-sky-500 mt-4 text-lg font-medium">
+          Technologies I work with
+        </p>
+      </div>
 
-      <div className="max-w-7xl mx-auto overflow-hidden relative">
-        {/* Background decoration */}
-        <div className="absolute -top-20 -right-20 w-60 h-60 bg-[#f66539]/5 rounded-full blur-3xl -z-10"></div>
-        <div className="absolute -bottom-20 -left-20 w-60 h-60 bg-[#f66539]/5 rounded-full blur-3xl -z-10"></div>
-        <div className="relative overflow-hidden h-[220px]">
-          <motion.div
-            className="absolute flex gap-16 items-center"
-            initial={{ x: "-10%" }}
-            animate={controls}
-            style={{ width: `${marqueeSkills.length * 230}px` }}
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-          >
-            {marqueeSkills.map((skill, index) => (
+      <div className="max-w-4xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8">
+          {skills.map((skill, index) => {
+            const IconComponent = skill.icon;
+            return (
               <motion.div
                 key={index}
-                className="flex-shrink-0 w-[170px] h-[170px] bg-white/90 rounded-xl flex flex-col items-center justify-center backdrop-blur-sm"
-                style={{
-                  boxShadow: "0 0 15px rgba(246, 101, 57, 0.5), 0 0 15px rgba(246, 101, 57, 0.3), 0 0 15px rgba(246, 101, 57, 0.3), 0 0 15px rgba(246, 101, 57, 0.3)"
-                }}
-                whileHover={{
-                  scale: 1.1,
-                  boxShadow: "0 0 25px rgba(246, 101, 57, 0.8), 0 0 25px rgba(246, 101, 57, 0.8), 0 0 25px rgba(246, 101, 57, 0.8), 0 0 25px rgba(246, 101, 57, 0.8)"
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 hover:shadow-md hover:border-sky-500/20 transition-all duration-300 flex flex-col items-center text-center group"
               >
-                <img
-                  src={skill.img}
-                  alt={skill.name}
-                  className="h-20 w-20 object-contain mb-4"
-                />
-                <p className="text-gray-900 text-2xl font-bold text-center">{skill.name}</p>
+                <div className="mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <IconComponent
+                    className="w-12 h-12 group-hover:drop-shadow-lg transition-all duration-300"
+                    style={{ color: skill.color }}
+                  />
+                </div>
+                <h3 className="text-sky-600 font-semibold group-hover:text-sky-700 transition-colors duration-300 text-sm">
+                  {skill.name}
+                </h3>
               </motion.div>
-            ))}
-          </motion.div>
+            );
+          })}
         </div>
       </div>
     </div>

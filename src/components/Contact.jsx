@@ -31,7 +31,7 @@ const Contact = () => {
         setShowSuccessMessage(true);
         e.target.reset();
 
-        // Hide success message after 5 seconds
+
         setTimeout(() => {
           setShowSuccessMessage(false);
         }, 5000);
@@ -46,11 +46,7 @@ const Contact = () => {
     }
   };
   return (
-    <div className="text-white max-w-[1200px] mx-auto py-8 md:py-16 px-4 sm:px-6 relative overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-20 -left-32 w-64 h-64 bg-[#f66539]/10 rounded-full filter blur-3xl opacity-30 animate-pulse"></div>
-      <div className="absolute bottom-20 -right-32 w-64 h-64 bg-[#f66539]/10 rounded-full filter blur-3xl opacity-30 animate-pulse" style={{ animationDelay: '2s' }}></div>
-      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-[#f66539]/5 rounded-full filter blur-[100px] opacity-30"></div>
+    <div className="text-sky-500 max-w-[1200px] mx-auto py-8 md:py-16 px-4 sm:px-6 relative overflow-hidden bg-white">
       <Toaster
         position="top-center"
         toastOptions={{
@@ -73,29 +69,11 @@ const Contact = () => {
         }}
       />
       <div className="text-center mb-8 md:mb-12">
-        <motion.h1
-          name="Contact"
-          className="text-transparent bg-clip-text bg-gradient-to-r from-[#f66539] to-[#ff8c66] text-4xl md:text-5xl font-bold mb-4 md:mb-6 relative inline-block"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="relative z-10">Get In Touch</span>
-          <motion.span
-            className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r from-[#f66539]/10 via-[#f66539]/60 to-[#f66539]/10 rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: '100%' }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-          ></motion.span>
-        </motion.h1>
-        <motion.div
-          className="w-full max-w-2xl mx-auto mt-4 text-center text-gray-300/80 italic tracking-wide"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
+        <h2 className="text-3xl md:text-4xl font-bold text-sky-500 mb-2">Contact</h2>
+        <div className="w-16 h-0.5 bg-sky-500 mx-auto mb-4"></div>
+        <p className="text-sky-400 max-w-2xl mx-auto">
           Feel free to reach out for collaborations or just a friendly hello
-        </motion.div>
+        </p>
       </div>
 
       <AnimatePresence>
@@ -137,180 +115,125 @@ const Contact = () => {
       </AnimatePresence>
 
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
-        <motion.div
-          className="w-full md:w-3/5 bg-gradient-to-br from-black/40 to-black/20 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-xl backdrop-blur-sm border border-white/10 hover:border-[#f66539]/20 transition-all duration-500 hover:shadow-[0_10px_50px_-12px_rgba(246,101,57,0.15)] relative overflow-hidden group flex flex-col"
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#f66539] to-[#f66539]/80 flex items-center relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-0.5 after:bg-gradient-to-r after:from-[#f66539] after:to-transparent after:rounded-full">
-            {/* Decorative dot */}
-            <span className="absolute -left-3 -top-3 w-2 h-2 rounded-full bg-[#f66539] opacity-75"></span>
-            <FaEnvelope className="mr-2 text-xl md:text-2xl" />
-            <span>Send Me a Message</span>
-          </h2>
-          <form className="w-full max-w-md mx-auto" onSubmit={handleSubmit} method="POST">
-            <div className="flex flex-col gap-3 md:gap-4">
-              <div className="border border-[#f66539]/70 rounded-lg overflow-hidden hover:border-[#f66539] hover:shadow-[0_0_15px_rgba(246,101,57,0.25)] hover:translate-y-[-3px] transition-all duration-300 w-full bg-black/20 backdrop-blur-sm relative group">
-                {/* Decorative corner */}
-                <span className="absolute w-3 h-3 border-t border-l border-[#f66539]/50 top-0 left-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <span className="absolute w-3 h-3 border-b border-r border-[#f66539]/50 bottom-0 right-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <div className="flex items-center">
-                  <FaUser className="ml-3 text-[#f66539] opacity-60 text-xs group-hover:opacity-100 transition-opacity duration-300" />
-                  <input
-                    className="w-full bg-transparent py-2.5 pl-3 pr-4 outline-none border-none focus:ring-0 text-sm md:text-base"
-                    type="text"
-                    name="name"
-                    placeholder="Your Name"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="border border-[#f66539]/70 rounded-lg overflow-hidden hover:border-[#f66539] hover:shadow-[0_0_15px_rgba(246,101,57,0.25)] hover:translate-y-[-3px] transition-all duration-300 w-full bg-black/20 backdrop-blur-sm relative group">
-                {/* Decorative corner */}
-                <span className="absolute w-3 h-3 border-t border-l border-[#f66539]/50 top-0 left-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <span className="absolute w-3 h-3 border-b border-r border-[#f66539]/50 bottom-0 right-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <div className="flex items-center">
-                  <FaEnvelope className="ml-3 text-[#f66539] opacity-60 text-xs group-hover:opacity-100 transition-opacity duration-300" />
-                  <input
-                    className="w-full bg-transparent py-2.5 pl-3 pr-4 outline-none border-none focus:ring-0 text-sm md:text-base"
-                    type="email"
-                    name="email"
-                    placeholder="Your Email"
-                    required
-                  />
-                </div>
-              </div>
-              <div className="border border-[#f66539]/70 rounded-lg overflow-hidden hover:border-[#f66539] hover:shadow-[0_0_15px_rgba(246,101,57,0.25)] hover:translate-y-[-3px] transition-all duration-300 w-full bg-black/20 backdrop-blur-sm relative group">
-                {/* Decorative corner */}
-                <span className="absolute w-3 h-3 border-t border-l border-[#f66539]/50 top-0 left-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <span className="absolute w-3 h-3 border-b border-r border-[#f66539]/50 bottom-0 right-0 group-hover:border-[#f66539] transition-colors duration-300"></span>
-                <div className="flex">
-                  <div className="pt-2.5 ml-3 text-[#f66539] opacity-60 group-hover:opacity-100 transition-opacity duration-300">
-                    <FaPaperPlane className="text-xs" />
-                  </div>
-                  <textarea
-                    className="w-full bg-transparent py-2.5 pl-3 pr-4 outline-none border-none focus:ring-0 text-sm md:text-base"
-                    name="message"
-                    placeholder="Your Message..."
-                    rows={4}
-                    required
-                  ></textarea>
-                </div>
+        <div className="w-full md:w-3/5 bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
+          <h3 className="text-xl font-semibold mb-6 text-sky-500 flex items-center">
+            <FaEnvelope className="mr-2 text-sky-500" />
+            Send Me a Message
+          </h3>
+          <form onSubmit={handleSubmit} method="POST" className="space-y-4">
+            <div className="space-y-4">
+              <div className="relative">
+                <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sky-400" />
+                <input
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all duration-300 text-sky-500"
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                />
               </div>
 
-              <div className="flex items-center justify-center mt-2">
-                <motion.button
-                  className="relative bg-gradient-to-r from-[#f66539] to-[#e55428] px-5 md:px-7 py-2.5 md:py-3 rounded-lg text-white font-bold flex items-center justify-center transition-all duration-300 hover:shadow-[0_0_20px_rgba(246,101,57,0.5)] disabled:opacity-70 disabled:cursor-not-allowed overflow-hidden group/btn border border-transparent hover:border-white/20"
-                  type="submit"
-                  disabled={isSubmitting}
-                  whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
-                  whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
-                >
-                  <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover/btn:opacity-100 transition-opacity duration-300"></span>
-                  {isSubmitting ? (
-                    <>
-                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                      </svg>
-                      <span className="relative z-10">Sending...</span>
-                    </>
-                  ) : (
-                    <>
-                      <FaPaperPlane className="mr-2 relative z-10" />
-                      <span className="relative z-10">Send Message</span>
-                    </>
-                  )}
-                </motion.button>
+              <div className="relative">
+                <FaEnvelope className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sky-400" />
+                <input
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all duration-300 text-sky-500"
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                />
               </div>
+
+              <div className="relative">
+                <FaPaperPlane className="absolute left-3 top-4 text-sky-400" />
+                <textarea
+                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all duration-300 text-sky-500 resize-none"
+                  name="message"
+                  placeholder="Your Message..."
+                  rows={4}
+                  required
+                ></textarea>
+              </div>
+
+              <button
+                className="w-full bg-sky-500 hover:bg-sky-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center"
+                type="submit"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? (
+                  <>
+                    <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>
+                    <FaPaperPlane className="mr-2" />
+                    Send Message
+                  </>
+                )}
+              </button>
             </div>
           </form>
-        </motion.div>
+        </div>
 
-        <motion.div
-          className="flex flex-col gap-5 md:gap-8 bg-gradient-to-br from-black/40 to-black/20 p-4 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl shadow-xl backdrop-blur-sm border border-white/10 hover:border-[#f66539]/20 transition-all duration-500 hover:shadow-[0_10px_50px_-12px_rgba(246,101,57,0.15)] relative overflow-hidden group w-full md:w-2/5 justify-center"
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-        >
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold mb-4 md:mb-6 text-transparent bg-clip-text bg-gradient-to-r from-[#f66539] to-[#f66539]/80 flex items-center relative pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-16 after:h-0.5 after:bg-gradient-to-r after:from-[#f66539] after:to-transparent after:rounded-full">
-            {/* Decorative dot */}
-            <span className="absolute -left-3 -top-3 w-2 h-2 rounded-full bg-[#f66539] opacity-75"></span>
-            <FaPhoneAlt className="mr-2 text-xl" />
-            <span>Contact Info</span>
-          </h2>
+        <div className="w-full md:w-2/5 bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
+          <h3 className="text-xl font-semibold mb-6 text-sky-500 flex items-center">
+            <FaPhoneAlt className="mr-2 text-sky-500" />
+            Contact Info
+          </h3>
 
-          <div className="space-y-4 md:space-y-5">
-            <motion.a
+          <div className="space-y-4">
+            <a
               href="mailto:jaiswalshivang01@gmail.com"
-              className="flex items-center gap-4 hover:text-[#f66539] transition-colors duration-300 group"
-              whileHover={{ x: 5 }}
+              className="flex items-center gap-4 text-sky-500 hover:text-sky-600 transition-colors duration-300 group"
             >
-              <div className="bg-gradient-to-br from-[#f66539]/30 to-[#f66539]/10 p-3 rounded-full group-hover:bg-gradient-to-br group-hover:from-[#f66539]/60 group-hover:to-[#f66539]/30 group-hover:shadow-[0_0_15px_rgba(246,101,57,0.4)] group-hover:scale-110 transition-all duration-300 border border-[#f66539]/20 group-hover:border-[#f66539]/40 flex-shrink-0">
-                <FaEnvelope className="w-5 h-5 text-white" />
+              <div className="bg-gray-100 p-3 rounded-full group-hover:bg-sky-500/10 transition-all duration-300">
+                <FaEnvelope className="w-5 h-5 text-sky-500" />
               </div>
-              <span className="text-sm sm:text-base md:text-lg break-all">jaiswalshivang01@gmail.com</span>
-            </motion.a>
+              <span className="text-sm sm:text-base">jaiswalshivang01@gmail.com</span>
+            </a>
 
-            <motion.a
+            <a
               href="tel:+919235377107"
-              className="flex items-center gap-4 hover:text-[#f66539] transition-colors duration-300 group"
-              whileHover={{ x: 5 }}
+              className="flex items-center gap-4 text-sky-500 hover:text-sky-600 transition-colors duration-300 group"
             >
-              <div className="bg-gradient-to-br from-[#f66539]/30 to-[#f66539]/10 p-3 rounded-full group-hover:bg-gradient-to-br group-hover:from-[#f66539]/60 group-hover:to-[#f66539]/30 group-hover:shadow-[0_0_15px_rgba(246,101,57,0.4)] group-hover:scale-110 transition-all duration-300 border border-[#f66539]/20 group-hover:border-[#f66539]/40 flex-shrink-0">
-                <FaPhoneAlt className="w-5 h-5 text-white" />
+              <div className="bg-gray-100 p-3 rounded-full group-hover:bg-sky-500/10 transition-all duration-300">
+                <FaPhoneAlt className="w-5 h-5 text-sky-500" />
               </div>
-              <span className="text-sm sm:text-base md:text-lg">+91 9235377107</span>
-            </motion.a>
+              <span className="text-sm sm:text-base">+91 9235377107</span>
+            </a>
 
-            <motion.div
-              className="flex items-center gap-4 group"
-              whileHover={{ x: 5 }}
-            >
-              <div className="bg-gradient-to-br from-[#f66539]/30 to-[#f66539]/10 p-3 rounded-full group-hover:bg-gradient-to-br group-hover:from-[#f66539]/60 group-hover:to-[#f66539]/30 group-hover:shadow-[0_0_15px_rgba(246,101,57,0.4)] group-hover:scale-110 transition-all duration-300 border border-[#f66539]/20 group-hover:border-[#f66539]/40 flex-shrink-0">
-                <FaMapMarkerAlt className="w-5 h-5 text-white" />
+            <div className="flex items-center gap-4 text-sky-500">
+              <div className="bg-gray-100 p-3 rounded-full">
+                <FaMapMarkerAlt className="w-5 h-5 text-sky-500" />
               </div>
-              <span className="text-sm sm:text-base md:text-lg">Bihar, Patna-800005</span>
-            </motion.div>
+              <span className="text-sm sm:text-base">Bihar, Patna-800005</span>
+            </div>
           </div>
 
-          <div className="mt-6 md:mt-auto pt-3 border-t border-white/10">
-            <h3 className="text-base sm:text-lg font-semibold mb-3 relative inline-flex items-center pb-2 after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-12 after:h-0.5 after:bg-gradient-to-r after:from-[#f66539] after:to-transparent after:rounded-full">
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h4 className="text-lg font-semibold mb-4 text-sky-500 flex items-center">
               <span className="mr-2">Follow Me</span>
-              <motion.div
-                animate={{
-                  rotate: [0, 10, 0, -10, 0],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.5,
-                  repeatDelay: 2
-                }}
-              >
-                👋
-              </motion.div>
-            </h3>
-            <div className="flex gap-4">
+              <span>👋</span>
+            </h4>
+            <div className="flex gap-3">
               {socialLinks.map((social, index) => (
-                <motion.a
+                <a
                   key={index}
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-gradient-to-br from-[#f66539]/30 to-[#f66539]/10 p-3 rounded-full hover:bg-[#f66539] hover:shadow-[0_0_20px_rgba(246,101,57,0.6)] hover:scale-110 transition-all duration-300 border border-[#f66539]/20 hover:border-[#f66539]"
-                  whileHover={{ y: -5 }}
-                  whileTap={{ scale: 0.9 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + (index * 0.1) }}
+                  className="bg-gray-100 p-3 rounded-full hover:bg-sky-500 hover:text-white transition-all duration-300 text-sky-500 hover:scale-110"
                 >
                   {social.icon}
-                </motion.a>
+                </a>
               ))}
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

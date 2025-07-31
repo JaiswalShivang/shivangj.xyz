@@ -16,10 +16,9 @@ function App() {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
     >
-      {/* Background elements */}
       <div className="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none -z-50">
-        <div className="absolute top-[10%] right-[5%] w-[300px] h-[300px] bg-[#f66539]/5 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-[20%] left-[10%] w-[250px] h-[250px] bg-[#f66539]/3 rounded-full blur-[120px]"></div>
+        <div className="absolute top-[10%] right-[5%] w-[300px] h-[300px] bg-sky-500/5 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-[20%] left-[10%] w-[250px] h-[250px] bg-sky-500/3 rounded-full blur-[120px]"></div>
       </div>
 
       <Navbar />
