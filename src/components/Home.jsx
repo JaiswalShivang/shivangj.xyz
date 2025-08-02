@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-scroll";
 import { ReactTyped } from "react-typed";
 import { motion } from "framer-motion";

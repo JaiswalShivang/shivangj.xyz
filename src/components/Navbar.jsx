@@ -1,9 +1,8 @@
-import React from "react";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-scroll";
 
-import { FaHome, FaUser, FaCode, FaGraduationCap, FaEnvelope, FaTimes, FaProjectDiagram } from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 import { HiMenuAlt3 } from 'react-icons/hi';
 
 const slideIn = {
@@ -20,14 +19,6 @@ const Navbar = () => {
   const array = ["Home", "About", "Skills", "Projects", "Education", "Contact"];
 
 
-  const menuIcons = {
-    "Home": <FaHome className="mr-3" />,
-    "About": <FaUser className="mr-3" />,
-    "Skills": <FaCode className="mr-3" />,
-    "Projects": <FaProjectDiagram className="mr-3" />,
-    "Education": <FaGraduationCap className="mr-3" />,
-    "Contact": <FaEnvelope className="mr-3" />
-  };
   const [click, setclick] = useState(false);
   const [showmenu, setshowmenu] = useState(true);
 

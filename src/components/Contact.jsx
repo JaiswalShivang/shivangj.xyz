@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
-import { FaGithub, FaTwitter, FaInstagram, FaPaperPlane, FaUser, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaCheck, FaHeart } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaInstagram, FaPaperPlane, FaUser, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt } from 'react-icons/fa';
 
 const Contact = () => {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const socialLinks = [
     { name: "GitHub", icon: <FaGithub className="w-5 h-5" />, url: "https://github.com/JaiswalShivang" },
     { name: "X", icon: <FaTwitter className="w-5 h-5" />, url: "https://twitter.com/shivang_jaiswal" },
     { name: "Instagram", icon: <FaInstagram className="w-5 h-5" />, url: "https://instagram.com/shivang_jaiswal" }
   ];
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   useEffect(() => {
     const script = document.createElement('script');
@@ -32,38 +35,41 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const formData = new FormData(e.target);
     const templateParams = {
-      from_name: formData.get('name'),
-      from_email: formData.get('email'),
-      message: formData.get('message'),
-      to_name: 'Shivang Jaiswal',
+      from_name: name,
+      from_email: email,
+      message: message,
     };
 
-    console.log('Sending email with params:', templateParams);
-
     try {
-      const result = await window.emailjs.send(
+      await window.emailjs.send(
         'service_eqxmng7',
         'template_b1kzqp4',
         templateParams,
         'u7aWk0yBjWXwslp3B'
       );
 
+      // Clear form fields one by one
+      setName('');
+      setEmail('');
+      setMessage('');
 
-      console.log('EmailJS Success:', result);
-      e.target.elements.message.value = '';
-
-      toast.success('Message sent successfully!', {
-        style: {
-          background: 'white',
-          color: '#10b981',
-        },
-        icon: '✅',
-        position: 'top-center',
-      });
+      toast.success(
+        <div className="text-sm">
+          <div className="font-semibold mb-2">Message sent successfully! ✅</div>
+        </div>,
+        {
+          style: {
+            background: 'white',
+            color: '#10b981',
+            maxWidth: '400px',
+          },
+          duration: 6000,
+          position: 'top-center',
+        }
+      );
     } catch (error) {
-      console.error('EmailJS Error Details:', error);
+      toast.error('Failed to send message. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -114,6 +120,8 @@ const Contact = () => {
                   type="text"
                   name="name"
                   placeholder="Your Name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
                   required
                 />
               </div>
@@ -125,6 +133,8 @@ const Contact = () => {
                   type="email"
                   name="email"
                   placeholder="Your Email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   required
                 />
               </div>
@@ -135,6 +145,8 @@ const Contact = () => {
                   className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-transparent outline-none transition-all duration-300 text-sky-500 resize-none"
                   name="message"
                   placeholder="Your Message..."
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   rows={4}
                   required
                 ></textarea>

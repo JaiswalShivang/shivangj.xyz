@@ -1,4 +1,4 @@
-import { React, useRef } from "react";
+import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import image2 from '../assets/images/image2.png'
 const animation1 = {
