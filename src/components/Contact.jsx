@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import toast, { Toaster } from 'react-hot-toast';
 import { FaGithub, FaTwitter, FaInstagram, FaPaperPlane, FaUser, FaEnvelope, FaMapMarkerAlt, FaPhoneAlt, FaCheck, FaHeart } from 'react-icons/fa';
 
 const Contact = () => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const socialLinks = [
     { name: "GitHub", icon: <FaGithub className="w-5 h-5" />, url: "https://github.com/JaiswalShivang" },
     { name: "X", icon: <FaTwitter className="w-5 h-5" />, url: "https://twitter.com/shivang_jaiswal" },
@@ -12,35 +11,61 @@ const Contact = () => {
   ];
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js';
+    script.onload = () => {
+      window.emailjs.init({
+        publicKey: 'u7aWk0yBjWXwslp3B',
+      });
+    };
+    document.head.appendChild(script);
+
+    return () => {
+      if (document.head.contains(script)) {
+        document.head.removeChild(script);
+      }
+    };
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
 
     const formData = new FormData(e.target);
+    const templateParams = {
+      from_name: formData.get('name'),
+      from_email: formData.get('email'),
+      message: formData.get('message'),
+      to_name: 'Shivang Jaiswal',
+    };
+
+    console.log('Sending email with params:', templateParams);
 
     try {
-      const response = await fetch('https://getform.io/f/ayvkzzkb', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json',
+      const result = await window.emailjs.send(
+        'service_eqxmng7',
+        'template_b1kzqp4',
+        templateParams,
+        'u7aWk0yBjWXwslp3B'
+      );
+
+      console.log('EmailJS Success:', result);
+      e.target.reset();
+
+      toast.success('Email sent successfully!', {
+        style: {
+          background: 'white',
+          color: '#10b981',
         },
+        icon: '✅',
+        position: 'top-center',
       });
-
-      if (response.ok) {
-        setShowSuccessMessage(true);
-        e.target.reset();
-
-
-        setTimeout(() => {
-          setShowSuccessMessage(false);
-        }, 5000);
-      } else {
-        toast.error('Failed to send message. Please try again.');
-      }
     } catch (error) {
-      toast.error('An error occurred. Please try again later.');
-      console.error(error);
+      console.error('EmailJS Error Details:', error);
+      console.error('Error status:', error.status);
+      console.error('Error text:', error.text);
+      toast.error(`Failed to send message: ${error.text || 'Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }
@@ -76,51 +101,13 @@ const Contact = () => {
         </p>
       </div>
 
-      <AnimatePresence>
-        {showSuccessMessage && (
-          <motion.div
-            className="fixed inset-0 flex items-center justify-center z-50 bg-black/50 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-          >
-            <motion.div
-              className="bg-gradient-to-br from-[#10b981]/90 to-[#10b981]/80 p-8 rounded-2xl max-w-md w-full shadow-2xl border border-white/20 text-center relative overflow-hidden"
-              initial={{ scale: 0.8, y: 20, opacity: 0 }}
-              animate={{ scale: 1, y: 0, opacity: 1 }}
-              exit={{ scale: 0.8, y: 20, opacity: 0 }}
-              transition={{ type: "spring", damping: 25 }}
-            >
-              <button
-                onClick={() => setShowSuccessMessage(false)}
-                className="absolute top-2 right-2 text-white/70 hover:text-white transition-colors"
-              >
-                ×
-              </button>
-              <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
-                <FaCheck className="text-[#10b981] text-4xl" />
-              </div>
-              <h3 className="text-white text-2xl font-bold mb-2">Message Sent Successfully!</h3>
-              <p className="text-white/90 mb-4">Thank you for reaching out. I'll get back to you as soon as possible.</p>
-              <div className="flex items-center justify-center text-white/80 text-sm">
-                <FaHeart className="mr-2 text-pink-400" /> Looking forward to connecting with you
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-10 -left-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
-              <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-xl"></div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       <div className="flex flex-col md:flex-row gap-6 md:gap-8 items-stretch">
         <div className="w-full md:w-3/5 bg-white p-6 rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition-all duration-300">
           <h3 className="text-xl font-semibold mb-6 text-sky-500 flex items-center">
             <FaEnvelope className="mr-2 text-sky-500" />
             Send Me a Message
           </h3>
-          <form onSubmit={handleSubmit} method="POST" className="space-y-4">
+          <form id="contact-form" onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-4">
               <div className="relative">
                 <FaUser className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sky-400" />
