@@ -46,7 +46,9 @@ const Contact = () => {
         'service_eqxmng7',
         'template_b1kzqp4',
         templateParams,
-        'u7aWk0yBjWXwslp3B'
+        {
+          publicKey: 'u7aWk0yBjWXwslp3B',
+        }
       );
 
       // Clear form fields one by one
