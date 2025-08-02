@@ -50,10 +50,11 @@ const Contact = () => {
         'u7aWk0yBjWXwslp3B'
       );
 
-      console.log('EmailJS Success:', result);
-      e.target.reset();
 
-      toast.success('Email sent successfully!', {
+      console.log('EmailJS Success:', result);
+      e.target.elements.message.value = '';
+
+      toast.success('Message sent successfully!', {
         style: {
           background: 'white',
           color: '#10b981',
@@ -63,9 +64,6 @@ const Contact = () => {
       });
     } catch (error) {
       console.error('EmailJS Error Details:', error);
-      console.error('Error status:', error.status);
-      console.error('Error text:', error.text);
-      toast.error(`Failed to send message: ${error.text || 'Please try again.'}`);
     } finally {
       setIsSubmitting(false);
     }
